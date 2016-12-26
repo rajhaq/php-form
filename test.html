@@ -4,14 +4,16 @@
 	<title>Try</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+
 	<script src="js/jq.js"></script>
+	
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<link href="css/ie10-viewport-bug-workaround.css" rel="stylesheet">
 	<!-- Custom styles for this template -->
-		<script src="js/bootstrap-datepicker.js"></script>
-	<link href="css/bootstrap-datepicker.css" rel="stylesheet">
     <link href="dashboard.css" rel="stylesheet">
-
+	<script src="js/bootstrap-datepicker.js"></script>
+	<link href="css/bootstrap-datepicker.css" rel="stylesheet">
+	<script src="js/bootstrap.min.js"></script>
 	<script src="js/bootstrap.js"></script>
 	<script src="js/npm.js"></script>
 </head>
@@ -29,9 +31,10 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-           <li><a href="form.html">Form</a></li>
-            <li><a href="table.php">Table</a></li>
- 
+            <li><a href="#"></a></li>
+            <li><a href="#"></a></li>
+            <li><a href="#"></a></li>
+            <li><a href="#"></a></li>
           </ul>
         </div>
       </div>
@@ -41,9 +44,24 @@
 	         <div class="col-md-2 sidebar">
           <div class="row">
 		  	         <div class="col-md-12">
+
 		  <ul class="nav nav-sidebar">
-            <li class="active"><a href="form.html">Form</a></li>
-            <li><a href="table.php">Table</a></li>
+            <li class="active"><a href="#">Overview <span class="sr-only">(current)</span></a></li>
+            <li><a href="#">Reports</a></li>
+            <li><a href="#">Analytics</a></li>
+            <li><a href="#">Export</a></li>
+          </ul>
+          <ul class="nav nav-sidebar">
+            <li><a href="">Nav item</a></li>
+            <li><a href="">Nav item again</a></li>
+            <li><a href="">One more nav</a></li>
+            <li><a href="">Another nav item</a></li>
+            <li><a href="">More navigation</a></li>
+          </ul>
+          <ul class="nav nav-sidebar">
+            <li><a href="">Nav item again</a></li>
+            <li><a href="">One more nav</a></li>
+            <li><a href="">Another nav item</a></li>
           </ul>
 		  </div>
 		  </div>
@@ -53,77 +71,46 @@
 	 <div class="col-md-12">
   	 <div class="panel panel-default">
 	 <div class="panel-body">
-	 <form action="form.php" method="post" enctype="multipart/form-data">
+	 <form action="test.php" method="post" enctype="multipart/form-data">
   <div class="form-group">
     <label for="name">Name</label>
     <input type="text" name="name" class="form-control" id="name" placeholder="Enter full name">
   </div>
-  <div class="form-group">
-    <label for="email">Name</label>
-    <input type="email" name="email" class="form-control" id="email" placeholder="Enter email">
+    <label for="email">Email address</label>
+    <div class="input-group">
+	<input type="email" name="email" class="form-control" id="email" placeholder="Enter email" aria-describedby="basic-addon2">
+	    <span class="input-group-addon" id="basic-addon2">@gmail.com</span>
   </div>
   <label for="phone">Phone</label>
   <div class="input-group">
-    <span class="input-group-addon" id="basic-addon1">+880</span>
+    <span class="input-group-addon"  id="basic-addon1">+880</span>
     <input type="text" class="form-control" name="phone" id="phone"  placeholder="" aria-describedby="basic-addon1">
   </div>
-  
-  <label for="dob">Date of birth</label>
-    <div class="input-group date form-group" data-provide="datepicker">
-	    
-  <input type="text" class="form-control datepicker" name="dob" id="dob">
+
+
+      <div class="form-group">
+    <label for="file">File input</label>
+    <input type="file" class="form-control-file" name="fileUpload" id="file" >
+    <small id="fileHelp" class="form-text text-muted">MAX Size: 20MB</small>
+  </div>
+
+  <div class="input-group date" data-provide="datepicker">
+  <input type="text" class="form-control">
     <div class="input-group-addon">
         <span class="glyphicon glyphicon-th"></span>
     </div>
 	<script type="text/javascript">$('.datepicker').datepicker({
-    format: "yyyy/mm/dd",
+    format: "dd-mm-yy",
+    todayBtn: true,
+    forceParse: false,
+    autoclose: true,
+    todayHighlight: true
 });</script>
 </div>
-  
 
-  <div class="form-group">
-    <div class="form-group">
-    <label for="address">Address</label>
-    <input type="text" class="form-control" name="address" id="address" placeholder="">
-  </div>
-    <div class="form-group">
-    <label for="file">File input</label>
-    <input type="file" class="form-control-file" name="fileUpload" id="file" aria-describedby="fileHelp">
-    <small id="fileHelp" class="form-text text-muted">MAX Size: 20MB</small>
-  </div>
-
-
-    <label for="sex">Sex</label>
-    <select class="form-control" name="sex" id="sex">
-      <option class="form-control" value="1">Male</option>
-      <option class="form-control" value="2">Female</option>
-    </select>
-  </div>
-  <div class="form-group">
-  <fieldset class="form-group">
-    <legend>Disabled body</legend>
-    <div class="form-check">
-      <label class="form-check-label">
-        <input type="radio" name="db" class="form-check-input" id="optionsRadios1" value="1">
-        Yes
-      </label>
-    </div>
-    <div class="form-check">
-    <label class="form-check-label">
-        <input type="radio" class="form-check-input" name="db" id="optionsRadios2" value="0" checked>
-        No
-      </label>
-    </div>
-  </fieldset>
-  <div class="form-check">
-    <label class="form-check-label">
-      <input type="checkbox" class="form-check-input">
-      are you sure that its your own information here?
-    </label>
-  </div>
   <button type="submit" class="btn btn-primary">Submit</button>
+  
 </form>
-</div>
 </div>
 </div>
 </div>
