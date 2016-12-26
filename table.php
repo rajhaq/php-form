@@ -11,7 +11,8 @@
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/bootstrap.js"></script>
 	<script src="js/npm.js"></script>
-		<link rel="stylesheet" href="css/font-awesome.css">
+	<link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/font-awesome.css">
 
 </head>
 <body>
@@ -95,10 +96,11 @@
 			echo"<td>Female</td>";
 
 		if($row["disable_body"]=='1')
-			echo"<td>Yes</td>";
+			echo"<td align='center'><i class='fa fa-check'></i></td>";
 		else if($row["disable_body"]=='0')
-			echo"<td>No</td>";
-				echo "<td><a  href='edit.php?email=" . $row["email"]. "'><i class='fa fa-edit'></i></a></td>";
+			echo"<td align='center'><i class='fa fa-times'></i></td>";
+				echo "<td><a  href='edit.php?email=" . $row["email"]. "'><i class='fa fa-pencil-square-o'></i>
+</a></td>";
 
 
 		echo "</tr>";

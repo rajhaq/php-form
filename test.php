@@ -4,8 +4,10 @@
 	<title>Try</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Refresh" content="3;url=table.php">
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<link href="css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+	<link href="start.css" rel="stylesheet">
 	<!-- Custom styles for this template -->
     <link href="dashboard.css" rel="stylesheet">
 	<script src="js/bootstrap.min.js"></script>
@@ -26,10 +28,8 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#"></a></li>
-            <li><a href="#"></a></li>
-            <li><a href="#"></a></li>
-            <li><a href="#"></a></li>
+            <li><a href="form.html">Form</a></li>
+            <li><a href="table.php">Table</a></li>
           </ul>
         </div>
       </div>
@@ -41,21 +41,26 @@
 	  $con=mysqli_connect("localhost","root","");
 	  if (!$con)
 	  {
-		  die('Connection error :'.mysqli_error($con));
+		  die('<h1>Connection error :'.mysqli_error($con).'</h1>');
 	  }
 	  mysqli_select_db($con,"bootstrap");
 	  $file = "files/" .$_FILES["fileUpload"]["name"];
 	  
 		move_uploaded_file($_FILES["fileUpload"]["tmp_name"], $file);
-		$sql_query="INSERT into test (name, email, phone, address)
-	   VALUES ('$_POST[name]','$_POST[email]','$_POST[phone]','$file')
-	  ";
+		UPDATE Customers
+SET City='Hamburg'
+WHERE CustomerID=1; 
+		$sql_query="UPDATE userinfo SET name='$_POST[name]', phone='$_POST[phone]' , dob='$_POST[dob]' ,
+		address='$_POST[address]' , picture='$file', sex='$_POST[sex]', disable_body='$_POST[db]'
+		WHERE email='$_POST[email]'
+	    ;";
 	  if(!mysqli_query($con,$sql_query))
 	  {
-		  die('Error: '.mysqli_error($con));
+		  die('<h1>Error: '.mysqli_error($con).'</h1>');
 	  }
-
-	  echo "<h1>Added</h1>";
+	  echo "<h1>User info updated</h1>
+	  </br>
+	  <h3>This page will be redirect to table page in 3sec, otherwise <a href='table.php'>cick here</a></h3>";
 	  ?>
       </div>
 

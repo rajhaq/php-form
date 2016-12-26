@@ -46,15 +46,16 @@
 	  mysqli_select_db($con,"bootstrap");
 	  $file = "files/" .$_FILES["fileUpload"]["name"];
 	  
-		move_uploaded_file($_FILES["fileUpload"]["tmp_name"], $file);
-		$sql_query="INSERT into userinfo (name, email, phone,dob, address, picture, sex, disable_body)
-	    VALUES ('$_POST[name]','$_POST[email]','$_POST[phone]','$_POST[dob]' ,'$_POST[address]','$file','$_POST[sex]','$_POST[db]')
-	    ";
+		move_uploaded_file($_FILES["fileUpload"]["tmp_name"], $file); 
+		$sql_query="UPDATE userinfo SET name='$_POST[name]', phone='$_POST[phone]' , dob='$_POST[dob]' ,
+		address='$_POST[address]' , picture='$file', sex='$_POST[sex]', disable_body='$_POST[db]'
+		WHERE email='$_POST[email]'
+	    ;";
 	  if(!mysqli_query($con,$sql_query))
 	  {
 		  die('<h1>Error: '.mysqli_error($con).'</h1>');
 	  }
-	  echo "<h1>User info added</h1>
+	  echo "<h1>User info updated</h1>
 	  </br>
 	  <h3>This page will be redirect to table page in 3sec, otherwise <a href='table.php'>cick here</a></h3>";
 	  ?>
