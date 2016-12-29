@@ -4,7 +4,6 @@
 	<title>Try</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta http-equiv="Refresh" content="3;url=table.php">
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<link href="css/ie10-viewport-bug-workaround.css" rel="stylesheet">
 	<link href="start.css" rel="stylesheet">
@@ -36,29 +35,52 @@
     </nav>
 	<div class="container">
 
-      <div class="starter-template">
-	  <?php 
-	  $con=mysqli_connect("localhost","root","");
-	  if (!$con)
-	  {
+		<div class="starter-template">
+		<?php
+
+		$con=mysqli_connect("localhost","root","");
+		if (!$con)
+		{
 		  die('<h1>Connection error :'.mysqli_error($con).'</h1>');
-	  }
-	  mysqli_select_db($con,"bootstrap");
-	  $file = "files/" .$_FILES["fileUpload"]["name"];
-	  
+		}
+		  
+
+		mysqli_select_db($con,"bootstrap");
+		$file = $_FILES["fileUpload"]["name"];
+		if(!is_numeric($_POST['phone']))
+			header("Location: insert.php?name=$_POST[name]&email=$_POST[email]&phone=&dob=$_POST[dob]&address=$_POST[address]&picture=$file&sex=$_POST[sex]&disable_body=$_POST[db]");  
+
+
+
+		
+
+		if(strlen($file)>0)
+		{
+			echo "file";
+
+			$sql_query="INSERT into userinfo (name, email, phone,dob, address, picture, sex, disable_body)
+			VALUES ('$_POST[name]','$_POST[email]','$_POST[phone]','$_POST[dob]' ,'$_POST[address]','$file','$_POST[sex]','$_POST[db]')
+			";
+		}
+		else
+		{
+		   echo "no file";
+			$sql_query="INSERT into userinfo (name, email, phone,dob, address, picture,sex, disable_body)
+			VALUES ('$_POST[name]','$_POST[email]','$_POST[phone]','$_POST[dob]' ,'$_POST[address]',NULL,'$_POST[sex]','$_POST[db]')
+			";
+		}
+
+
 		move_uploaded_file($_FILES["fileUpload"]["tmp_name"], $file);
-		$sql_query="INSERT into userinfo (name, email, phone,dob, address, picture, sex, disable_body)
-	    VALUES ('$_POST[name]','$_POST[email]','$_POST[phone]','$_POST[dob]' ,'$_POST[address]','$file','$_POST[sex]','$_POST[db]')
-	    ";
-	  if(!mysqli_query($con,$sql_query))
-	  {
+		if(!mysqli_query($con,$sql_query))
+		{
 		  die('<h1>Error: '.mysqli_error($con).'</h1>');
-	  }
-	  echo "<h1>User info added</h1>
-	  </br>
-	  <h3>This page will be redirect to table page in 3sec, otherwise <a href='table.php'>cick here</a></h3>";
-	  ?>
-      </div>
+		}
+		echo "<h1>User info added</h1>
+		</br>
+		<h3>This page will be redirect to table page in 3sec, otherwise <a href='table.php'>cick here</a></h3>";
+		?>
+		</div>
 
     </div><!-- /.container -->
 
